@@ -39,13 +39,13 @@ struct ContentView: View {
     
     /// サムネイル画像
     @ViewBuilder private func thumbnail(_ item: ImageItem) -> some View {
-        Image(uiImage: item.image)
+        item.image
             .resizable()
             .frame(width: 100, height: 100)
             .cornerRadius(20)
             .onDrag {
                 list.dragging = item
-                return NSItemProvider(contentsOf: item.url)!
+                return  NSItemProvider()
             }
             .onDrop(of: [.url], delegate: DropViewDelegate(list: list, target: item))
     }
